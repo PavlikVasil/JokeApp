@@ -30,8 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var count = 0
     
     var items: [StoreItem?] = []
-    
-    var activeTextField : UITextField? = nil
+
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputField: UITextField!
@@ -97,14 +96,6 @@ extension ViewController{
 }
 
 extension ViewController{
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.activeTextField = textField
-      }
-        
-
-      func textFieldDidEndEditing(_ textField: UITextField) {
-        self.activeTextField = nil
-      }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         inputField.resignFirstResponder()
