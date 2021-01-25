@@ -17,11 +17,9 @@ class WebViewController: UIViewController, WKNavigationDelegate {
 
     override func viewDidLoad() {
         
-        let url = URL(string: "http://www.icndb.com/api/")!
         webView = WKWebView(frame: self.view.frame)
         webView.isUserInteractionEnabled = true
         self.view.addSubview(webView)
-        webView.load(URLRequest(url: url))
         
         self.webView.addSubview(self.activityIndicator)
         self.activityIndicator.startAnimating()
@@ -29,7 +27,16 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.navigationDelegate = self
         activityIndicator.hidesWhenStopped = true
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadURL()
+    }
+    
+    func loadURL(){
+        let url = URL(string: "http://www.icndb.com/api/")!
+        
+        webView.load(URLRequest(url: url))
+    }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         activityIndicator.startAnimating()
